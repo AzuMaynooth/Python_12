@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation History</title>
+    <!-- Icon for web -->
+    <link rel="Icon" href="{{ url_for('static', filename='img/Logo.PNG') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Operation History</h1>
+        </header>
+
+        <!-- Form for filtering by date range -->
+        <form method="GET" action="{{ url_for('history') }}">
+            <label for="from">From:</label>
+            <input type="date" id="from" name="from">
+            <label for="to">To:</label>
+            <input type="date" id="to" name="to">
+            <button type="submit">Filter</button>
+        </form>
+
+        <!-- Mostrar el historial de operaciones -->
+        <div id="history-container">
+            {% if history %}
+                <ul class="history-list">
+                    {% for entry in history %}
+                        <li>
+                            <strong>{{ entry.operation }}</strong> - {{ entry.product }} | {{ entry.amount }} units | Date: {{ entry.date }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No history found for this date range.</p>
+            {% endif %}
+        </div>
+
+        <section class="button-container">
+            <a href="{{ url_for('index') }}" class="btn-return">Regresar al Inicio</a>
+        </section>
+        <footer>
+            <p>Author: Azucena Jimenez Castaneda<br>
+            <a href="mailto:hege@example.com">xxx@example.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>

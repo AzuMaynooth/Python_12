@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Encoding -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Accounting System</title>
+    <!-- Icon for web -->
+    <link rel="Icon" href="{{ url_for('static', filename='img/Logo.PNG') }}">
+    <!-- Add CSS style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Main Page</h1>
+        </header>
+
+        <main>
+            <!-- Current Stock and Balance Section -->
+            <section class="balance-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Current Balance & Stock Level</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Current Account Balance:</strong> <span id="account-balance">Loading...</span> €</p>
+                        <p><strong>Current Stock Level:</strong> <span id="stock-level">Loading...</span> kg</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buttons for Subpages -->
+            <section class="button-container">
+                <a href="{{ url_for('purchase_form') }}" class="btn-primary">Purchase Form</a>
+                <a href="{{ url_for('sale_form') }}" class="btn-primary">Sale Form</a>
+                <a href="{{ url_for('balance_change_form') }}" class="btn-primary">Balance Change Form</a>
+                <a href="{{ url_for('history') }}" class="btn-primary">View Operation History</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>Author: Azucena Jimenez Castaneda<br>
+            <a href="mailto:hege@example.com">xxx@example.com</a></p>
+        </footer>
+    </div>
+
+    <!-- Add JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

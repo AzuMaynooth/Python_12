@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Form</title>
+    <!-- Icon for web -->
+    <link rel="Icon" href="{{ url_for('static', filename='img/Logo.PNG') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Sale Form</h1>
+        </header>
+
+        <!-- Aquí le decimos que pille la información -->
+        <form action="{{ url_for('sale_form') }}" method="POST">
+            <div class="form-container">
+                <!-- Boxes for inputs -->
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" name="product_name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit-price">Unit Price (€)</label>
+                    <input type="number" id="unit-price" name="unit_price" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="number-of-pieces">Number of Pieces</label>
+                    <input type="number" id="number-of-pieces" name="number_of_pieces" class="form-input" required>
+                </div>
+            </div>
+
+            <!-- Buttons for Submission and Return -->
+            <section class="button-container">
+                <button type="submit" class="btn-primary">Submit Sale</button>
+                <a href="{{ url_for('index') }}" class="btn-return">Regresar al Inicio</a>
+            </section>
+        </form>
+
+        <!-- Mostrar mensajes de error o éxito en el front end-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flashes">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <footer>
+            <p>Author: Azucena Jimenez Castaneda<br>
+            <a href="mailto:hege@example.com">xxx@example.com</a></p>
+        </footer>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="{{ url_for('static', filename='js/form-validation.js') }}"></script>
+</body>
+</html>
